@@ -2,6 +2,9 @@
 
 RevoShop is a simple e-commerce website built using Next.js, React, and Tailwind CSS. Users can browse a product catalog, view product details, add items to a shopping cart, update item quantities, and read supporting shop information through About and FAQ pages.
 
+## Deployed Website
+https://milestone-3-edwardyunkian-epp6.vercel.app/
+
 ## Project Overview
 
 The application is designed as a small front-end e-commerce store for everyday essentials. Product data is stored locally in the project, making the app easy to run without a backend service or external database.
