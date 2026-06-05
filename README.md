@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RevoShop
+
+RevoShop is a simple e-commerce website built using Next.js, React, and Tailwind CSS. Users can browse a product catalog, view product details, add items to a shopping cart, update item quantities, and read supporting shop information through About and FAQ pages.
+
+## Project Overview
+
+The application is designed as a small front-end e-commerce store for everyday essentials. Product data is stored locally in the project, making the app easy to run without a backend service or external database.
+
+This project focuses on:
+
+- Building a multi-page storefront with the Next.js App Router
+- Rendering reusable product and navigation components
+- Managing cart state with React Context
+- Persisting cart data in the browser using `localStorage`
+- Styling a responsive user interface with Tailwind CSS
+
+## Features Implemented
+
+- Product catalog page displaying 30 products
+- Product detail pages using dynamic routes
+- Add to cart functionality
+- Cart quantity increase and decrease controls
+- Cart total calculation
+- Persistent cart state using browser `localStorage`
+- Navigation bar with live cart quantity
+- About page describing the fictional shop
+- FAQ page with common customer questions
+- Responsive layout for desktop and mobile screens
+- Indonesian Rupiah price formatting
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) 16
+- [React](https://react.dev/) 19
+- [React DOM](https://react.dev/reference/react-dom)
+- [Tailwind CSS](https://tailwindcss.com/) 4
+- [ESLint](https://eslint.org/)
+- JavaScript
+
+## Project Structure
+
+```text
+src
+|-- app
+|   |-- about
+|   |   `-- page.js
+|   |-- cart
+|   |   `-- page.js
+|   |-- faq
+|   |   `-- page.js
+|   |-- products
+|   |   `-- [id]
+|   |       `-- page.js
+|   |-- globals.css
+|   |-- layout.js
+|   `-- page.js
+|-- components
+|   |-- AddToCartButton.js
+|   |-- Navbar.js
+|   `-- ProductCard.js
+|-- context
+|   `-- CartContext.js
+`-- data
+    `-- products.js
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have Node.js installed on your machine.
+
+### Installation
+
+Install the project dependencies:
+
+```bash
+npm install
+```
+
+### Run the Development Server
+
+Start the local development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the app in your browser:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build for Production
 
-## Learn More
+Create a production build:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Start the production server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run start
+```
 
-## Deploy on Vercel
+### Run Linting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Check the project with ESLint:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+```
+
+## Main Routes
+
+| Route | Description |
+| --- | --- |
+| `/` | Displays the product catalog |
+| `/products/[id]` | Displays details for a selected product |
+| `/cart` | Displays cart items, quantities, and total price |
+| `/about` | Displays information about RevoShop |
+| `/faq` | Displays frequently asked questions |
+
+## Notes
+
+- Product data is stored locally in `src/data/products.js`.
+- Cart data is saved in browser `localStorage`, so it may differ between browsers or devices.
+- The project does not include real checkout, payment, shipping, or backend database functionality.
