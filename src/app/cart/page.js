@@ -31,21 +31,24 @@ export default function CartPage() {
       <h2 className="font-headline text-3xl font-bold text-gray-900">Your Cart</h2>
 
       <div className="mt-8 space-y-6">
-        {cartItems.map((item) => (
+        {cartItems.map((item) => {
+          const imageUrl = item.images[0];
+          const itemName = item.title;
+          return (
           <div
             key={item.id}
             className="grid grid-cols-[96px_1fr] gap-4 rounded-xl border border-gray-200 bg-white p-4 sm:grid-cols-[120px_1fr_auto]"
           >
             <img
-              src={item.image}
-              alt={item.name}
+              src={imageUrl}
+              alt={itemName}
               className="h-24 w-24 rounded-lg object-cover sm:h-28 sm:w-28"
             />
 
             <div>
-              <h2 className="font-semibold text-gray-900">{item.name}</h2>
+              <h2 className="font-semibold text-gray-900">{itemName}</h2>
               <p className="mt-1 text-blue-600">
-                Rp {item.price.toLocaleString("id-ID")}
+                ${item.price}
               </p>
 
               <div className="mt-4 flex items-center gap-4">
@@ -71,17 +74,27 @@ export default function CartPage() {
 
             <div className="col-span-2 text-left sm:col-span-1 sm:text-right">
               <p className="font-semibold text-gray-900">
-                Rp {(item.price * item.quantity).toLocaleString("id-ID")}
+                ${(item.price * item.quantity)}
               </p>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6">
         <div className="flex items-center justify-between text-lg font-bold">
           <span>Total</span>
-          <span>Rp {totalPrice.toLocaleString("id-ID")}</span>
+          <span>${totalPrice}</span>
+        </div>
+
+        <div className="mt-6">
+          <Link
+            href="/checkout"
+            className="block w-full rounded-lg bg-green-600 px-4 py-3 text-center font-bold text-white hover:bg-green-700"
+          >
+            Proceed to Checkout
+          </Link>
         </div>
       </div>
     </section>

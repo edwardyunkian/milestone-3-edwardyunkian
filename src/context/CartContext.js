@@ -19,6 +19,10 @@ export function CartProvider({ children }) {
     localStorage.setItem("revoshop-cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   function addToCart(product) {
     setCartItems((currentItems) => {
       const existingItem = currentItems.find((item) => item.id === product.id);
@@ -62,6 +66,7 @@ export function CartProvider({ children }) {
         cartItems,
         addToCart,
         removeFromCart,
+        clearCart,
         getProductQuantity,
         totalQuantity,
       }}

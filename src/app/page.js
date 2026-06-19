@@ -1,7 +1,17 @@
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/data/products";
 
-export default function HomePage() {
+async function getProducts() {
+  const res = await fetch("https://api.escuelajs.co/api/v1/products", {
+    cache: "no-store" 
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch products");
+  }
+  return res.json();
+}
+
+export default async function HomePage() {
+  const products = await getProducts();
   return (
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="max-w-2xl border-b border-gray-100 pb-10 mb-12">
@@ -11,7 +21,7 @@ export default function HomePage() {
             everyday needs.
           </p>
           </div>
-      
+    
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-6">
           {products.map((product) => (

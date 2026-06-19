@@ -1,134 +1,208 @@
 # RevoShop
 
-RevoShop is a simple e-commerce website built using Next.js, React, and Tailwind CSS. Users can browse a product catalog, view product details, add items to a shopping cart, update item quantities, and read supporting shop information through About and FAQ pages.
+## Live Demo
 
-## Deployed Website
+**Deployed Website:**
 https://milestone-3-edwardyunkian-epp6.vercel.app/
 
-## Project Overview
+**GitHub Repository:**
+https://github.com/Revou-FSSE-Feb26/milestone-3-edwardyunkian
 
-The application is designed as a small front-end e-commerce store for everyday essentials. Product data is stored locally in the project, making the app easy to run without a backend service or external database.
+---
 
-This project focuses on:
+# Project Overview
 
-- Building a multi-page storefront with the Next.js App Router
-- Rendering reusable product and navigation components
-- Managing cart state with React Context
-- Persisting cart data in the browser using `localStorage`
-- Styling a responsive user interface with Tailwind CSS
+RevoShop is a modern e-commerce web application built with Next.js. The application allows users to browse products, view product details, manage a shopping cart, authenticate through a login system, complete a checkout process, and manage products through an admin dashboard.
 
-## Features Implemented
+The project uses the Platzi Fake Store API for product, user, and authentication data while implementing custom API routes for CRUD operations and route protection using Next.js middleware.
 
-- Product catalog page displaying 30 products
-- Product detail pages using dynamic routes
-- Add to cart functionality
-- Cart quantity increase and decrease controls
-- Cart total calculation
-- Persistent cart state using browser `localStorage`
-- Navigation bar with live cart quantity
-- About page describing the fictional shop
-- FAQ page with common customer questions
-- Responsive layout for desktop and mobile screens
-- Indonesian Rupiah price formatting
+---
 
-## Technologies Used
+# Features Implemented
 
-- [Next.js](https://nextjs.org/) 16
-- [React](https://react.dev/) 19
-- [React DOM](https://react.dev/reference/react-dom)
-- [Tailwind CSS](https://tailwindcss.com/) 4
-- [ESLint](https://eslint.org/)
-- JavaScript
+## Product Catalog
 
-## Project Structure
+* Display product list on homepage
+* Dynamic product detail pages
+* Fetch product data from Platzi API
+* Responsive product grid layout
 
-```text
-src
-|-- app
-|   |-- about
-|   |   `-- page.js
-|   |-- cart
-|   |   `-- page.js
-|   |-- faq
-|   |   `-- page.js
-|   |-- products
-|   |   `-- [id]
-|   |       `-- page.js
-|   |-- globals.css
-|   |-- layout.js
-|   `-- page.js
-|-- components
-|   |-- AddToCartButton.js
-|   |-- Navbar.js
-|   `-- ProductCard.js
-|-- context
-|   `-- CartContext.js
-`-- data
-    `-- products.js
+## Authentication
+
+* User login using Platzi API authentication endpoint
+* Authentication token stored in cookies
+* Login and logout functionality
+* Redirect users after successful login
+
+## Route Protection
+
+* Protected Checkout page
+* Protected Admin Dashboard
+* Middleware-based authentication checks
+* Automatic redirect to login page for unauthorized users
+
+## Shopping Cart
+
+* Add products to cart
+* Remove products from cart
+* Update item quantities
+* Cart summary and total calculation
+* Persistent cart state using localStorage
+
+## Checkout
+
+* Checkout form
+* Order summary
+* Order confirmation page
+* Cart clearing after successful checkout
+
+## Admin Dashboard
+
+* View products
+* Create new products
+* Edit products
+* Delete products
+* View registered users
+
+## API Routes
+
+Implemented custom Next.js API Routes:
+
+* GET /api/products
+* POST /api/products
+* PUT /api/products/[id]
+* DELETE /api/products/[id]
+
+## State Management
+
+* React Context API for global cart state
+* LocalStorage persistence
+* Efficient state updates for cart operations
+
+---
+
+# Technologies Used
+
+* Next.js 16
+* React 19
+* Tailwind CSS 4
+* JavaScript (ES6+)
+* React Context API
+* Next.js Middleware
+* Next.js API Routes
+* Platzi Fake Store API
+
+---
+
+# Screenshots
+
+## Homepage
+
+![Homepage](./public/screenshots/Homepage.png)
+
+---
+
+## Product Detail Page
+
+![Product Details](./public/screenshots/Product-Details.png)
+
+---
+
+## Shopping Cart
+
+![Shopping Cart](./public/screenshots/Shopping-Cart.png)
+
+---
+
+## Login Page
+
+![Login Page](./public/screenshots/Login-Page.png)
+
+---
+
+## Checkout Page
+
+![Checkout Page](./public/screenshots/Checkout-Page.png)
+
+---
+
+## Admin Dashboard
+
+![Admin Dashboard](./public/screenshots/Admin-Dashboard.png)
+
+---
+
+
+## Registered Users Table
+
+![Registered Users](./public/screenshots/Registered-Users.png)
+
+---
+
+
+# Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Revou-FSSE-Feb26/milestone-3-edwardyunkian
 ```
 
-## Getting Started
-
-### Prerequisites
-
-Make sure you have Node.js installed on your machine.
-
-### Installation
-
-Install the project dependencies:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-### Run the Development Server
-
-Start the local development server:
+Run development server:
 
 ```bash
 npm run dev
 ```
 
-Open the app in your browser:
+Open:
 
 ```text
 http://localhost:3000
 ```
 
-### Build for Production
+---
 
-Create a production build:
+# Build for Production
 
 ```bash
 npm run build
 ```
 
-Start the production server:
-
 ```bash
 npm run start
 ```
 
-### Run Linting
+---
 
-Check the project with ESLint:
+# Project Structure
 
-```bash
-npm run lint
+```text
+src
+├── app
+│   ├── admin
+│   ├── api
+│   ├── cart
+│   ├── checkout
+│   ├── login
+│   ├── products
+│   └── page.js
+├── components
+├── context
+└── middleware.js
 ```
 
-## Main Routes
+---
 
-| Route | Description |
-| --- | --- |
-| `/` | Displays the product catalog |
-| `/products/[id]` | Displays details for a selected product |
-| `/cart` | Displays cart items, quantities, and total price |
-| `/about` | Displays information about RevoShop |
-| `/faq` | Displays frequently asked questions |
+# Notes
 
-## Notes
-
-- Product data is stored locally in `src/data/products.js`.
-- Cart data is saved in browser `localStorage`, so it may differ between browsers or devices.
-- The project does not include real checkout, payment, shipping, or backend database functionality.
+* Product, user, and authentication data are fetched from the Platzi Fake Store API.
+* Cart data is persisted using browser localStorage.
+* API routes are implemented using Next.js Route Handlers.
+* Middleware is used to protect authenticated routes.
+* The Platzi API does not permanently persist updates to seed data; therefore, local UI state updates are used to demonstrate CRUD functionality.
